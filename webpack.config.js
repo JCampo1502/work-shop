@@ -9,7 +9,8 @@ module.exports = {
         app:[
             '@babel/polyfill',
             './src/app/index.js'
-        ]
+        ],
+        vendor: './src/app/vendor.js'
     },
     output: {
         filename: "./script/[name].[contenthash].js",
@@ -52,7 +53,11 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: "./src/index.html"
+            template: "./src/index.html",           
+        }),
+        new HtmlWebpackPlugin({
+            template: "./src/pages/update.html",
+            filename: "./pages/update.html"
         }),
         new MiniCssExtractPlugin({
             filename: "./styles/[name].[contenthash].css"            
