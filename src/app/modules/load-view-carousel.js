@@ -3,11 +3,12 @@ import { getMovies } from "./get-movies";
 import { showMovies } from "./show-movie";
 import { postMovie } from "./post-movies";
 import { deleteMovie } from "./delete-movie";
+import { getCategories } from "./helpers/get-categories";
 
 export const loadViewCarousel = async()=>{
     const carouselContainer = document.querySelector("#carousel-container")
     const registerForm = document.querySelector("#register");
-    const {infantil, adult} = await getMovies(baseUrl);
+    const {infantil, adult} = getCategories(await getMovies(baseUrl));
 
     const carousels = showMovies(infantil) + showMovies(adult);
     carouselContainer.innerHTML = carousels;
